@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Cat(models.Model):
   name = models.CharField(max_length=100)
@@ -10,6 +10,8 @@ class Cat(models.Model):
   def __str__(self):
     return self.name
 
+  def get_absolute_url(self):
+    return reverse('detail', kwargs={'cat_id': self.id})
 
 class Owner(models.Model):
   name = models.CharField(max_length=255)
