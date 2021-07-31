@@ -12,8 +12,8 @@ footer {
     padding-top: 0;
     text-align: right;
 }
-.nav-wrapper{
-    background-color: aqua;
+.nav-wrapper,.page-footer{
+    background-color: rgb(100, 172, 172);
 }
 a{
     color:#000;
