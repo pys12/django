@@ -7,12 +7,12 @@ from .forms import FeedingForm
 
 class CatCreate(CreateView):
   model = Cat
-  fields = '__all__'
+  fields = ['name', 'breed', 'description', 'age']
   success_url = '/cats/'
 
 class CatUpdate(UpdateView):
   model = Cat
-  fields = ['name','breed', 'description', 'age']
+  fields = ['name', 'breed', 'description', 'age']
 
 class CatDelete(DeleteView):
   model = Cat
@@ -67,3 +67,8 @@ class ToyUpdate(UpdateView):
 class ToyDelete(DeleteView):
   model = Toy
   success_url = '/toys/'
+
+def assoc_toy(request, cat_id, toy_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Cat.objects.get(id=cat_id).toys.add(toy_id)
+  return redirect('detail', cat_id=cat_id)
